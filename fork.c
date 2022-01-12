@@ -6,7 +6,7 @@
 /*   By: hphanixa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 17:02:41 by hphanixa          #+#    #+#             */
-/*   Updated: 2022/01/12 17:07:57 by hphanixa         ###   ########.fr       */
+/*   Updated: 2022/01/12 17:56:06 by hphanixa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	pipex(t_util *util)
 	close(end[1]);
 	waitpid(util->child1, &status, 0);
 	waitpid(util->child2, &status, 0);
+//	fprintf(stderr, "blabla\n");
 	exit(WEXITSTATUS(status));
 }
 
@@ -55,7 +56,6 @@ void	check_if_infile_is_correct(t_util *ptr_util)
 
 void	check_if_outfile_is_correct(t_util *ptr_util)
 {
-<<<<<<< HEAD
 	if (access(ptr_util->arg[4], F_OK) != 0 || 
 		(access(ptr_util->arg[4], R_OK | W_OK) != 0))
 	{
@@ -67,7 +67,6 @@ void	check_if_outfile_is_correct(t_util *ptr_util)
 	}
 	if (ptr_util->outfile < 0)
 		perror("open");
-=======
 		if (access(ptr_util->arg[4], F_OK) != 0 || 
 				(access(ptr_util->arg[4], R_OK | W_OK) != 0))
 		{
@@ -80,7 +79,6 @@ void	check_if_outfile_is_correct(t_util *ptr_util)
 		}
 		if (ptr_util->outfile < 0)
 			perror("open");
->>>>>>> 01e8093a682da5c76a4fdb61cbcdbfe884c0979e
 }
 
 void	child_one(int *end, t_util *util1)
@@ -91,8 +89,8 @@ void	child_one(int *end, t_util *util1)
 	close(end[1]);
 	close(end[0]);
 	execve(util1->path_with_cmd1, util1->cmd_option1, util1->environnement);
-	printf("pas bon ----\n");
-	perror(NULL);
+//	fprintf(stderr,"pas bon ----\n");
+	perror("");
 	exit(1);
 }
 
@@ -104,7 +102,7 @@ void	child_two(int *end, t_util *util2)
 	dup2(end[0], STDIN_FILENO);
 	close(end[0]);
 	execve(util2->path_with_cmd2, util2->cmd_option2, util2->environnement);
-	printf("------pas bon ----\n");
-	perror(NULL);
+//	fprintf(stderr, "------pas bon ----\n");
+	perror("pipex");
 	exit(1);
 }

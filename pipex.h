@@ -49,6 +49,6 @@ char	*ft_strdup(const char *s1);
 char	*ft_strchr(const char *s, int c);
 void	check_if_infile_is_correct(t_util *ptr_util);
 void	check_if_outfile_is_correct(t_util *ptr_util);
-char *new_path_with_cmd(t_util *ptr_util, char *arg);
+char	*new_path_with_cmd(t_util *ptr_util, char *arg);
 
 #endif

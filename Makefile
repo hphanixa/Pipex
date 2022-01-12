@@ -4,7 +4,6 @@ SRCS =	fork.c \
 		error.c \
 		main.c \
 
-
 OBJS = $(SRCS:.c=.o)
 
 CFLAGS = -Wall -Wextra -Werror -fsanitize=address,undefined
@@ -35,5 +34,3 @@ fclean : clean
 re : fclean all
 
 .PHONY: re clean fclean all
-
-

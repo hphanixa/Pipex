@@ -6,7 +6,7 @@
 /*   By: hphanixa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 17:02:43 by hphanixa          #+#    #+#             */
-/*   Updated: 2022/01/12 17:04:36 by hphanixa         ###   ########.fr       */
+/*   Updated: 2022/01/12 17:45:44 by hphanixa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,14 @@
 
 char	**find_path(char **envp)
 {
-	char **path;
-	int i; 
-	
+	char	**path;
+	int		i; 
+
 	i = 0;
 	while (envp[i] != NULL && ft_strnstr(envp[i], "PATH=", 5) == NULL)
 		i++;
 	if (envp[i] == NULL)
-	{
-		return (0);}
+		return (0);
 	path = ft_split(envp[i] + LEN_WORD_PATH, ':');
 	return (path);
 }
