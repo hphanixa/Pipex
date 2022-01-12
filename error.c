@@ -6,7 +6,7 @@
 /*   By: hphanixa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 17:02:47 by hphanixa          #+#    #+#             */
-/*   Updated: 2022/01/12 21:01:29 by hphanixa         ###   ########.fr       */
+/*   Updated: 2022/01/12 21:48:20 by hphanixa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	ft_cmd_error(char **cmd)
 		write(STDERR_FILENO, cmd[0], ft_strlen(cmd[0]));
 	}
 	write(STDERR_FILENO, "\n", 1);
+	exit(42);
 }
 
 void	free_after_split(char ***str)

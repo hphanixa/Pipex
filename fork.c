@@ -6,7 +6,7 @@
 /*   By: hphanixa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 17:02:41 by hphanixa          #+#    #+#             */
-/*   Updated: 2022/01/12 21:32:44 by hphanixa         ###   ########.fr       */
+/*   Updated: 2022/01/12 21:54:21 by hphanixa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,28 @@
 void	pipex(t_util *util)
 {	
 	int	status;
-	int	end[2];
+//	int	end[2];
 
 	util->cmd_option1 = ft_split(util->arg[2], ' ');
 	util->cmd_option2 = ft_split(util->arg[3], ' ');
-	if (pipe(end) < 0)
+	if (pipe(util->end) < 0)
 		ft_error(NULL);
 	util->child1 = fork();
 	if (util->child1 < 0)
 		ft_error("fork");
 	if (util->child1 == 0 && util->infile > 0)
-		child_one(end, util);
+		child_one(util);
 	else if (util->child1 == 0 && util->infile < 0)
 		exit(1);
 	util->child2 = fork();
 	if (util->child2 < 0)
 		ft_error("fork");
 	else if (util->child2 == 0 && util->outfile > 0)
-		child_two(end, util);
+		child_two(util);
 	else if (util->child2 == 0 && util->outfile < 0)
 		exit(1);
-	close(end[0]);
-	close(end[1]);
+	close(util->end[0]);
+	close(util->end[1]);
 	waitpid(util->child1, &status, 0);
 	waitpid(util->child2, &status, 0);
 	exit(WEXITSTATUS(status));
@@ -79,32 +79,32 @@ void	check_if_outfile_is_correct(t_util *ptr_util)
 		perror("open");
 }
 
-void	child_one(int *end, t_util *util1)
+void	child_one( t_util *util1)
 {
 	dup2(util1->infile, STDIN_FILENO);
-	dup2(end[1], STDOUT_FILENO);
+	dup2(util1->end[1], STDOUT_FILENO);
 	close(util1->infile);
-	close(end[1]);
-	close(end[0]);
+	close(util1->end[1]);
+	close(util1->end[0]);
 	execve(util1->path_with_cmd1, util1->cmd_option1, util1->environnement);
-//	if (ft_strncmp("./", util1->cmd_option1[0], 2) == 0 || ft_strncmp("/", util1->cmd_option1[0], 1) == 0)
-	ft_cmd_error(util1->cmd_option1);
+	if (!(ft_strncmp("./", util1->cmd_option1[0], 2) == 0 || ft_strncmp("/", util1->cmd_option1[0], 1) == 0))
+		ft_cmd_error(util1->cmd_option1);
 //	else
 		perror("");
 	exit(1);
 }
 
-void	child_two(int *end, t_util *util2)
+void	child_two(t_util *util2)
 {
-	close(end[1]);
+	close(util2->end[1]);
 	dup2(util2->outfile, STDOUT_FILENO);
 	close(util2->outfile);
-	dup2(end[0], STDIN_FILENO);
-	close(end[0]);
+	dup2(util2->end[0], STDIN_FILENO);
+	close(util2->end[0]);
 	execve(util2->path_with_cmd2, util2->cmd_option2, util2->environnement);
-	if (ft_strncmp("./", util2->cmd_option2[0], 2) == 0 || ft_strncmp("/", util2->cmd_option2[0], 1) == 0)
+	if (!(ft_strncmp("./", util2->cmd_option2[0], 2) == 0 || ft_strncmp("/", util2->cmd_option2[0], 1) == 0))
 		ft_cmd_error(util2->cmd_option2);
-	else
+//	else
 		perror("");
 	exit(1);
 }
