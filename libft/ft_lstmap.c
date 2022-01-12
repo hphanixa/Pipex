@@ -6,7 +6,7 @@
 /*   By: hphanixa <hphanixa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 18:49:23 by hphanixa          #+#    #+#             */
-/*   Updated: 2022/01/12 19:42:53 by hphanixa         ###   ########.fr       */
+/*   Updated: 2022/01/12 20:12:45 by hphanixa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	while (lst)
 	{
 		new_elem = ft_lstnew(f(lst->content))
-		if (!new_elem)
+			if (!new_elem)
 			return (NULL)
-		else
+			else
 		{
 			ft_lstclear(&new_lst, del);
 			return (NULL);

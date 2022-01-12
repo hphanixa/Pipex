@@ -30,6 +30,7 @@ typedef struct s_util
 	int		outfile;
 	int		child1;
 	int		child2;
+	int		end[2];
 }	t_util;
 
 char	*ft_strjoin(char const *s1, char const *s2);
