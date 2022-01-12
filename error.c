@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hphanixa <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/12 17:02:47 by hphanixa          #+#    #+#             */
+/*   Updated: 2022/01/12 17:05:22 by hphanixa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pipex.h"
 
-void error_arg(void)
+void	error_arg(void)
 {
 	ft_putstr(USAGE);
 	exit(EXIT_FAILURE);
 }
 
-void ft_error(const char *arg)
+void	ft_error(const char *arg)
 {
 	if (errno == 0 || arg == NULL)
 		write(STDERR_FILENO, "Error\n", 6);
@@ -15,23 +27,19 @@ void ft_error(const char *arg)
 	exit(EXIT_FAILURE);
 }
 
-void ft_cmd_error(char **cmd)
+void	ft_cmd_error(char **cmd)
 {
-// si cmd commence par . ou /, no such file or directory	
 	write(STDERR_FILENO, "Command not found:", 18);
 	if (cmd != NULL && cmd[0] != NULL)
 	{
 		write(STDERR_FILENO, cmd[0], ft_strlen(cmd[0]));
 	}
-		write(STDOUT_FILENO, "\n", 1);
-//	free_after_split(&cmd);
-//	exit(SIGINT + EXIT_NUMBER);
-
+	write(STDOUT_FILENO, "\n", 1);
 }
 
-void free_after_split(char ***str)
+void	free_after_split(char ***str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (str != NULL)
