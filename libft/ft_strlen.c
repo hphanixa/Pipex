@@ -6,7 +6,7 @@
 /*   By: hphanixa <hphanixa@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 10:42:22 by hphanixa          #+#    #+#             */
-/*   Updated: 2021/01/07 13:55:55 by hphanixa         ###   ########.fr       */
+/*   Updated: 2022/01/12 18:55:00 by hphanixa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_strlen(const char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] != '\0')

@@ -6,7 +6,7 @@
 /*   By: hphanixa <hphanixa@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 08:32:47 by hphanixa          #+#    #+#             */
-/*   Updated: 2021/01/07 12:07:30 by hphanixa         ###   ########.fr       */
+/*   Updated: 2022/01/12 19:34:58 by hphanixa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (i < n)

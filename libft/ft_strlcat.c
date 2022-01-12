@@ -6,7 +6,7 @@
 /*   By: hphanixa <hphanixa@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 10:41:21 by hphanixa          #+#    #+#             */
-/*   Updated: 2021/01/13 10:39:32 by hphanixa         ###   ########.fr       */
+/*   Updated: 2022/01/12 18:39:22 by hphanixa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	unsigned int i;
-	unsigned int destlg;
-	unsigned int srclg;
+	unsigned int	i;
+	unsigned int	destlg;
+	unsigned int	srclg;
 
 	i = 0;
 	destlg = 0;

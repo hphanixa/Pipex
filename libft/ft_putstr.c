@@ -6,18 +6,18 @@
 /*   By: hphanixa <hphanixa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 19:54:49 by hphanixa          #+#    #+#             */
-/*   Updated: 2022/01/10 19:55:04 by hphanixa         ###   ########.fr       */
+/*   Updated: 2022/01/12 19:28:28 by hphanixa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_putstr(char *str)
+void	ft_putstr(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(str[i] != '\0')
+	while (str[i] != '\0')
 	{
 		ft_putchar(str[i]);
 		i++;

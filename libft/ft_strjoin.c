@@ -6,7 +6,7 @@
 /*   By: hphanixa <hphanixa@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 11:24:24 by hphanixa          #+#    #+#             */
-/*   Updated: 2021/01/07 14:59:39 by hphanixa         ###   ########.fr       */
+/*   Updated: 2022/01/12 19:07:59 by hphanixa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	j = 0;
 	if (!s1 || !s2)
 		return (NULL);
-	if (!(str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)))))
+	str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)) + 1);
+	if (!str)
 		return (NULL);
 	while (s1[i])
 	{

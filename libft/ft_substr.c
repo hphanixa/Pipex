@@ -6,7 +6,7 @@
 /*   By: hphanixa <hphanixa@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 10:56:05 by hphanixa          #+#    #+#             */
-/*   Updated: 2021/01/13 12:26:07 by hphanixa         ###   ########.fr       */
+/*   Updated: 2022/01/12 18:50:19 by hphanixa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	j;
 	char	*str;
 
-	str = (char*)malloc(sizeof(*s) * (len + 1));
+	str = (char *)malloc(sizeof(*s) * (len + 1));
 	if (!str)
 		return (NULL);
 	i = 0;

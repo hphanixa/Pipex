@@ -6,7 +6,7 @@
 /*   By: hphanixa <hphanixa@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 11:44:20 by hphanixa          #+#    #+#             */
-/*   Updated: 2021/01/13 15:04:13 by hphanixa         ###   ########.fr       */
+/*   Updated: 2022/01/12 18:50:34 by hphanixa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	i = ft_strlen(s1);
 	while (i && ft_strchr(set, s1[i]))
 		i--;
-	str = ft_substr((char*)s1, 0, i + 1);
+	str = ft_substr((char *)s1, 0, i + 1);
 	return (str);
 }

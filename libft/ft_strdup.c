@@ -6,7 +6,7 @@
 /*   By: hphanixa <hphanixa@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 10:46:43 by hphanixa          #+#    #+#             */
-/*   Updated: 2021/01/06 16:05:06 by hphanixa         ###   ########.fr       */
+/*   Updated: 2022/01/12 19:28:55 by hphanixa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ char	*ft_strdup(const char *s1)
 	i = 0;
 	while (s1[len])
 		len++;
-	if (!(dest = malloc(sizeof(char) * (len + 1))))
+	dest = malloc(sizeof(char) * (len + 1));
+	if (!dest)
 		return (NULL);
 	while (i < len)
 	{

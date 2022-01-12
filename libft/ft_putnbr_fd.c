@@ -6,7 +6,7 @@
 /*   By: hphanixa <hphanixa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 15:49:15 by hphanixa          #+#    #+#             */
-/*   Updated: 2021/01/11 17:45:07 by hphanixa         ###   ########.fr       */
+/*   Updated: 2022/01/12 19:27:51 by hphanixa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	unsigned int a;
+	unsigned int	a;
 
 	if (n < 0)
 	{

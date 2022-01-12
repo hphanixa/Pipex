@@ -6,7 +6,7 @@
 /*   By: hphanixa <hphanixa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 17:29:44 by hphanixa          #+#    #+#             */
-/*   Updated: 2021/01/18 18:08:13 by hphanixa         ###   ########.fr       */
+/*   Updated: 2022/01/12 18:47:03 by hphanixa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
-	t_list *temp;
+	t_list	*temp;
 
 	temp = lst;
 	if (lst)

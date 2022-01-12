@@ -6,7 +6,7 @@
 /*   By: hphanixa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 17:02:41 by hphanixa          #+#    #+#             */
-/*   Updated: 2022/01/12 17:56:06 by hphanixa         ###   ########.fr       */
+/*   Updated: 2022/01/12 19:05:03 by hphanixa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,9 @@ void	child_one(int *end, t_util *util1)
 	close(util1->infile);
 	close(end[1]);
 	close(end[0]);
+//	fprintf(stderr, "path_with_cmd1 = %s, cmd_option1 = %s, env = %s\n", util1->path_with_cmd1, *util1->cmd_option1, *util1->environnement);
 	execve(util1->path_with_cmd1, util1->cmd_option1, util1->environnement);
+//	execve("NULL", util1->cmd_option1, util1->environnement);
 //	fprintf(stderr,"pas bon ----\n");
 	perror("");
 	exit(1);
@@ -102,6 +104,7 @@ void	child_two(int *end, t_util *util2)
 	dup2(end[0], STDIN_FILENO);
 	close(end[0]);
 	execve(util2->path_with_cmd2, util2->cmd_option2, util2->environnement);
+//	execve("NULL", util2->cmd_option2, util2->environnement);
 //	fprintf(stderr, "------pas bon ----\n");
 	perror("pipex");
 	exit(1);

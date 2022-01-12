@@ -6,62 +6,78 @@
 /*   By: hphanixa <hphanixa@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 13:19:01 by hphanixa          #+#    #+#             */
-/*   Updated: 2021/01/07 12:20:18 by hphanixa         ###   ########.fr       */
+/*   Updated: 2022/01/12 19:40:19 by hphanixa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-int		is_charset(char c, char charset)
+int	count_strings(char const *s, char c)
 {
-	if (c == charset)
-		return (1);
-	return (0);
+	int	act_pos;
+	int	str_count;
+
+	act_pos = 0;
+	str_count = 0;
+	if (s[act_pos] == c)
+		str_count--;
+	while (s[act_pos] != '\0')
+	{
+		if (s[act_pos] == c && s[act_pos + 1] != c && s[act_pos + 1] != '\0')
+			str_count++;
+		act_pos++;
+	}
+	str_count++;
+	return (str_count);
 }
 
-int		count_words(char const *str, char c)
+char	*malloc_strings(const char *s, char c)
 {
-	int i;
-	int word;
+	char	*word;
+	int		i;
 
 	i = 0;
-	word = 0;
-	while (str[i])
+	while (s[i] && s[i] != c)
+		i++;
+	word = (char *)malloc(sizeof(char) * (i + 1));
+	if (!word)
+		return (NULL);
+	i = 0;
+	while (s[i] && s[i] != c)
 	{
-		if (!(is_charset(str[i], c)) &&
-		(((is_charset(str[i + 1], c) == 1)) || !(str[i + 1])))
-			word++;
+		word[i] = s[i];
 		i++;
 	}
+	word[i] = '\0';
 	return (word);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**tab_str;
+	int		words;
+	char	**tab;
 	int		i;
-	int		j;
-	int		k;
 
+	if (!s)
+		return (NULL);
+	words = count_strings(s, c);
+	tab = (char **)malloc(sizeof(char *) * (words + 1));
+	if (!tab)
+		return (NULL);
 	i = 0;
-	k = 0;
-	if (!(tab_str = malloc(sizeof(char*) * (count_words(s, c) + 1))))
-		return (0);
-	while (k < count_words(s, c))
+	while (*s)
 	{
-		while (s[i] && (is_charset(s[i], c) == 1))
+		while (*s && *s == c)
+			s++;
+		if (*s && *s != c)
+		{
+			tab[i] = malloc_strings(s, c);
 			i++;
-		j = i;
-		while (s[j] && (is_charset(s[j], c) == 0))
-			j++;
-		if (!(tab_str[k] = malloc(sizeof(char) * (j + 1))))
-			return (0);
-		j = 0;
-		while (s[i] && (is_charset(s[i], c) == 0))
-			tab_str[k][j++] = s[i++];
-		tab_str[k++][j] = '\0';
+			while (*s && *s != c)
+				s++;
+		}
 	}
-	tab_str[k] = 0;
-	return (tab_str);
+	tab[i] = NULL;
+	return (tab);
 }

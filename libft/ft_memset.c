@@ -6,7 +6,7 @@
 /*   By: hphanixa <hphanixa@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 07:57:49 by hphanixa          #+#    #+#             */
-/*   Updated: 2021/01/07 11:45:51 by hphanixa         ###   ########.fr       */
+/*   Updated: 2022/01/12 19:27:33 by hphanixa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	char *str;
+	char	*str;
 
 	str = b;
 	while (len)

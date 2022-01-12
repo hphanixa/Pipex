@@ -6,13 +6,13 @@
 /*   By: hphanixa <hphanixa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 19:54:15 by hphanixa          #+#    #+#             */
-/*   Updated: 2022/01/10 19:54:35 by hphanixa         ###   ########.fr       */
+/*   Updated: 2022/01/12 19:42:20 by hphanixa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_putchar(char c)
+void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
