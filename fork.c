@@ -6,7 +6,7 @@
 /*   By: hphanixa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 17:02:41 by hphanixa          #+#    #+#             */
-/*   Updated: 2022/01/12 22:07:34 by hphanixa         ###   ########.fr       */
+/*   Updated: 2022/01/12 22:55:49 by hphanixa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,17 +65,6 @@ void	check_if_outfile_is_correct(t_util *ptr_util)
 	}
 	if (ptr_util->outfile < 0)
 		perror("open");
-	if (access(ptr_util->arg[4], F_OK) != 0 || 
-			(access(ptr_util->arg[4], R_OK | W_OK) != 0))
-	{
-    	ptr_util->outfile = open(ptr_util->arg[4], O_CREAT | O_RDWR | O_TRUNC, 0644);
-	}
-	else
-	{
-		ptr_util->outfile = open(ptr_util->arg[4], O_RDWR | O_TRUNC);
-	}
-	if (ptr_util->outfile < 0)
-		perror("open");
 }
 
 void	child_one( t_util *util1)
@@ -89,7 +78,7 @@ void	child_one( t_util *util1)
 	if (!(ft_strncmp("./", util1->cmd_option1[0], 2) == 0 || ft_strncmp("/", util1->cmd_option1[0], 1) == 0))
 		ft_cmd_error(util1->cmd_option1);
 //	else
-		perror("");
+	perror("");
 	exit(1);
 }
 
@@ -104,6 +93,6 @@ void	child_two(t_util *util2)
 	if (!(ft_strncmp("./", util2->cmd_option2[0], 2) == 0 || ft_strncmp("/", util2->cmd_option2[0], 1) == 0))
 		ft_cmd_error(util2->cmd_option2);
 //	else
-		perror("");
+	perror("");
 	exit(1);
 }
