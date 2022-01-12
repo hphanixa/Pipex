@@ -6,7 +6,7 @@
 /*   By: hphanixa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 17:02:43 by hphanixa          #+#    #+#             */
-/*   Updated: 2022/01/12 22:43:45 by hphanixa         ###   ########.fr       */
+/*   Updated: 2022/01/12 22:52:43 by hphanixa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,7 @@ int		main (int ac, char **av, char **envp)
 	check_if_infile_is_correct(&util);
 	check_if_outfile_is_correct(&util);
 	if ((envp == NULL) || (*envp == NULL))
-	{
-		write(1, "yessss\n",7);
-		ft_error(*envp);}
+		ft_error(*envp);
 	util.search_path_in_envp = find_path(util.environnement);
 	util.path_with_cmd1 = new_path_with_cmd(&util, arg_position[2]);
 	util.path_with_cmd2 = new_path_with_cmd(&util, arg_position[3]);
