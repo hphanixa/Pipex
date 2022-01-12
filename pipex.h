@@ -41,7 +41,7 @@ char	**ft_split(char const *s, char c);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 void	child_one(t_util *util1);
 void	child_two(t_util *util2);
-void	free_after_split(char ***str);
+void	free_after_split(char **str);
 void	pipex(t_util *util);
 void	ft_cmd_error(char **cmd);
 void	ft_error(const char *m);
