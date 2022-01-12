@@ -6,7 +6,7 @@
 /*   By: hphanixa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 17:02:47 by hphanixa          #+#    #+#             */
-/*   Updated: 2022/01/12 21:48:20 by hphanixa         ###   ########.fr       */
+/*   Updated: 2022/01/12 22:41:11 by hphanixa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,19 @@ void	ft_cmd_error(char **cmd)
 	exit(42);
 }
 
-void	free_after_split(char ***str)
+void	free_after_split(char **str)
 {
 	int	i;
 
 	i = 0;
 	if (str != NULL)
 	{
-		while ((*str)[i])
+		while (str[i])
 		{
-			free((*str)[i]);
+			free(str[i]);
 			i++;
 		}
-		free(*str);
-		*str = NULL;
+		free(str);
+		str = NULL;
 	}
 }
