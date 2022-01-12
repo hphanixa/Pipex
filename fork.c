@@ -28,7 +28,6 @@ void	pipex(t_util *util)
 	waitpid(util->child1, &status, 0);
 	waitpid(util->child2, &status, 0);
 	exit(WEXITSTATUS(status));
-
 }
 
 void check_if_infile_is_correct(t_util *ptr_util)
@@ -56,7 +55,6 @@ void check_if_outfile_is_correct(t_util *ptr_util)
 		}
 		if (ptr_util->outfile < 0)
 			perror("open");
-
 }
 
 void	child_one(int *end, t_util *util1)
