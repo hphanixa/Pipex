@@ -55,6 +55,7 @@ void	check_if_infile_is_correct(t_util *ptr_util)
 
 void	check_if_outfile_is_correct(t_util *ptr_util)
 {
+<<<<<<< HEAD
 	if (access(ptr_util->arg[4], F_OK) != 0 || 
 		(access(ptr_util->arg[4], R_OK | W_OK) != 0))
 	{
@@ -66,6 +67,20 @@ void	check_if_outfile_is_correct(t_util *ptr_util)
 	}
 	if (ptr_util->outfile < 0)
 		perror("open");
+=======
+		if (access(ptr_util->arg[4], F_OK) != 0 || 
+				(access(ptr_util->arg[4], R_OK | W_OK) != 0))
+		{
+	    	ptr_util->outfile = open(ptr_util->arg[4], O_CREAT | O_RDWR | O_TRUNC, 0644);
+		}
+
+		else
+		{
+			ptr_util->outfile = open(ptr_util->arg[4], O_RDWR | O_TRUNC);
+		}
+		if (ptr_util->outfile < 0)
+			perror("open");
+>>>>>>> 01e8093a682da5c76a4fdb61cbcdbfe884c0979e
 }
 
 void	child_one(int *end, t_util *util1)
