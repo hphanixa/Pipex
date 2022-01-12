@@ -6,7 +6,7 @@
 /*   By: hphanixa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 17:02:43 by hphanixa          #+#    #+#             */
-/*   Updated: 2022/01/12 20:41:45 by hphanixa         ###   ########.fr       */
+/*   Updated: 2022/01/12 22:26:07 by hphanixa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,10 @@ char	*new_path_with_cmd(t_util *ptr_util, char *arg)
 		free(add_slash);
 		if (access(final_path, X_OK) == 0)
 			return (final_path);
+		if (ptr_util->search_path_in_envp[i+ 1] != 0)
+			free(final_path);
 		i++;
 	}
-//	ft_cmd_error(&cmd_option[0]);
-//	perror(arg);
-//	return (0);
 	return (final_path);
 }
 

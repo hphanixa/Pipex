@@ -6,7 +6,7 @@
 /*   By: hphanixa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 17:02:41 by hphanixa          #+#    #+#             */
-/*   Updated: 2022/01/12 21:54:21 by hphanixa         ###   ########.fr       */
+/*   Updated: 2022/01/12 22:07:34 by hphanixa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	pipex(t_util *util)
 {	
 	int	status;
-//	int	end[2];
 
 	util->cmd_option1 = ft_split(util->arg[2], ' ');
 	util->cmd_option2 = ft_split(util->arg[3], ' ');
