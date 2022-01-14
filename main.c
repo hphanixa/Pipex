@@ -6,7 +6,7 @@
 /*   By: hphanixa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 17:02:43 by hphanixa          #+#    #+#             */
-/*   Updated: 2022/01/14 09:49:10 by hphanixa         ###   ########.fr       */
+/*   Updated: 2022/01/14 15:07:35 by hphanixa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ char	**find_path(char **envp)
 
 char	*new_path_with_cmd(t_util *ptr_util, char *arg)
 {
-	char	*add_slash;
-	char	*final_path;
 	char	**cmd_option;
 	int		i;
 
@@ -42,20 +40,20 @@ char	*new_path_with_cmd(t_util *ptr_util, char *arg)
 	while (ptr_util->search_path_in_envp != NULL
 		&& ptr_util->search_path_in_envp[i] != NULL)
 	{
-		add_slash = ft_strjoin(ptr_util->search_path_in_envp[i], "/");
-		final_path = ft_strjoin(add_slash, cmd_option[0]);
-		free(add_slash);
-		if (access(final_path, X_OK) == 0)
+		ptr_util->add_slash = ft_strjoin(ptr_util->search_path_in_envp[i], "/");
+		ptr_util->final_path = ft_strjoin(ptr_util->add_slash, cmd_option[0]);
+		free(ptr_util->add_slash);
+		if (access(ptr_util->final_path, X_OK) == 0)
 		{
 			free_after_split(cmd_option);
-			return (final_path);
+			return (ptr_util->final_path);
 		}
 		if (ptr_util->search_path_in_envp[i + 1] != 0)
-			free(final_path);
+			free(ptr_util->final_path);
 		i++;
 	}
 	free_after_split(cmd_option);
-	return (final_path);
+	return (ptr_util->final_path);
 }
 
 int	main(int ac, char **av, char **envp)

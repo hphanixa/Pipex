@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipex.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hphanixa <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/14 14:50:13 by hphanixa          #+#    #+#             */
+/*   Updated: 2022/01/14 14:54:33 by hphanixa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PIPEX_H
 # define PIPEX_H
 
-#include <unistd.h>
-#include <stdio.h>
-#include <fcntl.h>
-#include <string.h>
-#include <stdlib.h>
-#include <sys/errno.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include "./libft/libft.h"
+# include <unistd.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include <string.h>
+# include <stdlib.h>
+# include <sys/errno.h>
+# include <sys/types.h>
+# include <sys/wait.h>
+# include "./libft/libft.h"
 
 # define USAGE "usage: ./pipex [infile] [cmd1] [cmd2] [outfile]\n"
 # define ARG_NUMBER_REQUIRED 5
@@ -20,12 +32,14 @@ typedef struct s_util
 {
 	char	*path_with_cmd1;
 	char	*path_with_cmd2;
+	char	*add_slash;
+	char	*final_path;
 	char	**arg;
 	char	**environnement;
 	char	**search_path_in_envp;
 	char	**cmd_option1;
 	char	**cmd_option2;
-	char 	**arg_position;
+	char	**arg_position;
 	int		infile;
 	int		outfile;
 	int		child1;
@@ -45,7 +59,7 @@ void	free_after_split(char **str);
 void	pipex(t_util *util);
 void	ft_cmd_error(char **cmd);
 void	ft_error(const char *m);
-void 	error_arg(void);
+void	error_arg(void);
 char	*ft_strdup(const char *s1);
 char	*ft_strchr(const char *s, int c);
 void	check_if_infile_is_correct(t_util *ptr_util);

@@ -6,20 +6,20 @@
 /*   By: hphanixa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 18:49:11 by hphanixa          #+#    #+#             */
-/*   Updated: 2022/01/12 20:13:44 by hphanixa         ###   ########.fr       */
+/*   Updated: 2022/01/14 14:51:09 by hphanixa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <string.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <string.h>
 
 typedef struct s_list
 {
-	struct	s_list	*next;
+	struct s_list	*next;
 	void			*content;
 }	t_list;	
 
