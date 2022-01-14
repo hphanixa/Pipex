@@ -6,7 +6,7 @@
 /*   By: hphanixa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 17:02:43 by hphanixa          #+#    #+#             */
-/*   Updated: 2022/01/12 22:52:43 by hphanixa         ###   ########.fr       */
+/*   Updated: 2022/01/14 09:49:10 by hphanixa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 char	**find_path(char **envp)
 {
 	char	**path;
-	int		i; 
+	int		i;
 
 	i = 0;
 	while (envp[i] != NULL && ft_strnstr(envp[i], "PATH=", 5) == NULL)
@@ -36,9 +36,11 @@ char	*new_path_with_cmd(t_util *ptr_util, char *arg)
 
 	i = 0;
 	cmd_option = ft_split(arg, ' ');
-	if (arg != NULL && (ft_strncmp("./", arg, 2) == 0  || ft_strncmp("/", arg, 1) == 0 ))
+	if (arg != NULL && (ft_strncmp("./", arg, 2) == 0
+			|| ft_strncmp("/", arg, 1) == 0))
 		return (arg);
-	while (ptr_util->search_path_in_envp != NULL && ptr_util->search_path_in_envp[i] != NULL)
+	while (ptr_util->search_path_in_envp != NULL
+		&& ptr_util->search_path_in_envp[i] != NULL)
 	{
 		add_slash = ft_strjoin(ptr_util->search_path_in_envp[i], "/");
 		final_path = ft_strjoin(add_slash, cmd_option[0]);
@@ -48,7 +50,7 @@ char	*new_path_with_cmd(t_util *ptr_util, char *arg)
 			free_after_split(cmd_option);
 			return (final_path);
 		}
-		if (ptr_util->search_path_in_envp[i+ 1] != 0)
+		if (ptr_util->search_path_in_envp[i + 1] != 0)
 			free(final_path);
 		i++;
 	}
@@ -56,10 +58,10 @@ char	*new_path_with_cmd(t_util *ptr_util, char *arg)
 	return (final_path);
 }
 
-int		main (int ac, char **av, char **envp)
+int	main(int ac, char **av, char **envp)
 {
 	t_util	util;
-	char **arg_position;
+	char	**arg_position;
 
 	util.arg = av;
 	arg_position = av;
