@@ -6,7 +6,7 @@
 /*   By: hphanixa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 17:02:43 by hphanixa          #+#    #+#             */
-/*   Updated: 2022/01/14 15:07:35 by hphanixa         ###   ########.fr       */
+/*   Updated: 2022/01/14 22:09:35 by hphanixa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ int	main(int ac, char **av, char **envp)
 	check_if_outfile_is_correct(&util);
 	if ((envp == NULL) || (*envp == NULL))
 		ft_error(*envp);
+	util.cmd_option1 = check_if_cmd1_exist(&util);
+	util.cmd_option2 = check_if_cmd2_exist(&util);
 	util.search_path_in_envp = find_path(util.environnement);
 	util.path_with_cmd1 = new_path_with_cmd(&util, arg_position[2]);
 	util.path_with_cmd2 = new_path_with_cmd(&util, arg_position[3]);

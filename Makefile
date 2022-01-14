@@ -3,6 +3,7 @@ NAME = pipex
 SRCS =	fork.c \
 		error.c \
 		main.c \
+		check_cmd.c
 
 OBJS = $(SRCS:.c=.o)
 
