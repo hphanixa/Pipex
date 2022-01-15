@@ -6,7 +6,7 @@
 /*   By: hphanixa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 17:02:41 by hphanixa          #+#    #+#             */
-/*   Updated: 2022/01/15 12:26:25 by hphanixa         ###   ########.fr       */
+/*   Updated: 2022/01/15 16:04:32 by hphanixa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	pipex(t_util *util)
 		child_two(util);
 	else if (util->child2 == 0 && util->outfile < 0)
 		exit(1);
-	close(util->end[0]);
-	close(util->end[1]);
+	if (close(util->end[0]) == -1 || close(util->end[1] == -1))
+		perror("close");
 	waitpid(util->child1, &status, 0);
 	waitpid(util->child2, &status, 0);
 	exit(WEXITSTATUS(status));
@@ -70,9 +70,9 @@ void	child_one(t_util *util1)
 {
 	dup2(util1->infile, STDIN_FILENO);
 	dup2(util1->end[1], STDOUT_FILENO);
-	close(util1->infile);
-	close(util1->end[1]);
-	close(util1->end[0]);
+	if (close(util1->infile) == -1 || close(util1->outfile) == -1
+		|| close(util1->end[1] == -1) || close(util1->end[0] == -1))
+		perror("close");
 	if (util1->cmd_option1 != NULL)
 		execve(util1->path_with_cmd1, util1->cmd_option1, util1->environnement);
 	if ((ft_strncmp("./", util1->cmd_option1[0], 2) == 0
@@ -90,6 +90,9 @@ void	child_two(t_util *util2)
 	close(util2->outfile);
 	dup2(util2->end[0], STDIN_FILENO);
 	close(util2->end[0]);
+	if (close(util2->infile) == -1 || close(util2->outfile) == -1
+		|| close(util2->end[1] == -1) || close(util2->end[0] == -1))
+		perror("close");
 	if (util2->cmd_option2 != NULL)
 		execve(util2->path_with_cmd2, util2->cmd_option2, util2->environnement);
 	if ((ft_strncmp("./", util2->cmd_option2[0], 2) == 0
