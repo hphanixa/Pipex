@@ -21,16 +21,16 @@ all : $(NAME)
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDES) 
 
 $(NAME) : $(OBJS)
-		@make -C libft
+		make -C libft
 		$(CC) $(CFLAGS) $(INCLUDES) -o $(NAME) $(SRCS) -lft -Llibft
 
 clean :
-	@make clean -C libft/
+	make clean -C libft/
 	$(RM) $(OBJS)
 
 fclean : clean
 	$(RM) $(NAME)
-	@make fclean -C libft/
+	make fclean -C libft/
 
 re : fclean all
 

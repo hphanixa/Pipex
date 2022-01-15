@@ -6,7 +6,7 @@
 /*   By: hphanixa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 17:02:41 by hphanixa          #+#    #+#             */
-/*   Updated: 2022/01/14 22:29:20 by hphanixa         ###   ########.fr       */
+/*   Updated: 2022/01/15 12:26:25 by hphanixa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,9 @@ void	child_one(t_util *util1)
 	close(util1->end[0]);
 	if (util1->cmd_option1 != NULL)
 		execve(util1->path_with_cmd1, util1->cmd_option1, util1->environnement);
-	if ((ft_strncmp("./", util1->cmd_option1[0], 2) != 0
-			|| ft_strncmp("/", util1->cmd_option1[0], 1) != 0) 
-			|| (util1->cmd_option1 == NULL))
+	if ((ft_strncmp("./", util1->cmd_option1[0], 2) == 0
+			|| ft_strncmp("/", util1->cmd_option1[0], 1) == 0)
+		|| (util1->cmd_option1 == NULL))
 		ft_cmd_error(util1->cmd_option1);
 	perror("");
 	exit(1);
@@ -94,7 +94,7 @@ void	child_two(t_util *util2)
 		execve(util2->path_with_cmd2, util2->cmd_option2, util2->environnement);
 	if ((ft_strncmp("./", util2->cmd_option2[0], 2) == 0
 			|| ft_strncmp("/", util2->cmd_option2[0], 1) == 0)
-			|| (util2->cmd_option2 == NULL))
+		|| (util2->cmd_option2 == NULL))
 		ft_cmd_error(util2->cmd_option2);
 	perror("");
 	exit(1);
