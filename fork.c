@@ -21,8 +21,8 @@ void	pipex(t_util *util)
 	util->child1 = fork();
 	if (util->child1 < 0)
 		ft_error("fork");
-	if (util->child1 == 0 && util->infile > 0)
-		child_one(util);
+	if (util->child1 == 0 && util->infile > 0) // si retour de fork = 0, signifie que
+		child_one(util);                   // le processus child1 est en cours.
 	else if (util->child1 == 0 && util->infile < 0)
 		exit(1);
 	util->child2 = fork();
@@ -36,7 +36,7 @@ void	pipex(t_util *util)
 	(close(util->end[0]));
 	(close(util->end[1]));
 	(close(util->outfile));
-	waitpid(util->child1, &status, 0);
+	waitpid(util->child1, &status, 0);  // le parent attend que le child1 termine son process
 	waitpid(util->child2, &status, 0);
 	exit(WEXITSTATUS(status));
 }
